@@ -16,7 +16,7 @@
     marker: "## {mark} opensearch main configuration ##"
     owner: "opensearch"
     group: "opensearch"
-    mode: 0600
+    mode: "0600"
 
 - name: OpenSearch Install | Adjust heap size
   notify: Restart opensearch
