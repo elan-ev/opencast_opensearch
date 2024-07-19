@@ -1,0 +1,45 @@
+---
+
+name: Deployment
+
+on:  # yamllint disable-line rule:truthy
+  - push
+  - pull_request
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distribution:
+          - dist: almalinux
+            version: '9'
+          - dist: centos
+            version: 9-Stream
+          - dist: rockylinux
+            version: '9'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install dependencies
+        run: pip3 install ansible
+
+      - name: install elan.opencast_repository
+        run: ansible-galaxy install elan.opencast_repository
+
+      - name: create lxc container
+        uses: lkiesow/setup-lxc-container@v1
+        with:
+          dist: ${{ matrix.distribution.dist }}
+          release: ${{ matrix.distribution.version }}
+
+      - name: deploy opensearch
+        working-directory: .test
+        run: ansible-playbook -i test, test.yml
+
+      - name: test that opensearch is running
+        run: >
+          curl --fail --silent
+          --retry 30 --retry-delay 1 --retry-all-errors
+          http://test:9200/

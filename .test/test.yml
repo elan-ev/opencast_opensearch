@@ -1,0 +1,9 @@
+---
+- name: Test Deployment
+  hosts: all
+  become: true
+  roles:
+    - role: elan.opencast_repository
+      opencast_version_major: 16
+    - role: elan.opencast_opensearch
+      opensearch_api_host: '0.0.0.0'
