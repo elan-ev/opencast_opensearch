@@ -1,11 +1,14 @@
 Ansible: Opencast OpenSearch Role
 ====================================
 
+![lint](https://github.com/elan-ev/opencast_opensearch/actions/workflows/lint.yml/badge.svg)
+![molecule](https://github.com/elan-ev/opencast_opensearch/actions/workflows/molecule.yml/badge.svg)
+
 This Ansible role installs and prepares OpenSearch for Opencast.
 
 This role supports the following,
 
-- Supports RHEL9
+- Supports RHEL9, Debian and Ubuntu
 - Install and configure OpenSearch from `elan.opencast_repository`
 - Disables the OpenSearch security plugin completely. Use a reverse
   proxy to secure OpenSearch with HTTP Basic Auth and TLS.
@@ -25,7 +28,7 @@ This role supports the following,
 
 ## Dependencies
 
-This role requires `elan.opencast_repository`.
+This role depends on `elan.opencast_repository`.
 
 ## Example Playbook
 
@@ -35,7 +38,6 @@ Example of how to configure and use the role:
 - hosts: servers
   become: true
   roles:
-    - role: elan.opencast_repository
     - role: elan.opencast_opensearch
 ```
 

@@ -1,0 +1,14 @@
+---
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Stat Opensearch configuration directory
+      ansible.builtin.stat:
+        path: /etc/opensearch
+      register: os_conf_dir
+
+    - name: Test Opensearch configuration directory exists
+      ansible.builtin.assert:
+        that: os_conf_dir.stat.exists

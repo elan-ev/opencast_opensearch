@@ -1,0 +1,24 @@
+---
+name: molecule
+
+on:  # yamllint disable-line rule:truthy
+  - push
+  - pull_request
+
+jobs:
+  molecule:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install dependencies
+        run: pip install -r .dev_requirements.txt
+
+      - name: install Ansbile dependencies
+        run: ansible-galaxy install -r requirements.yml
+
+      - name: test playbook
+        run: molecule test
+        env:
+          PY_COLORS: '1'

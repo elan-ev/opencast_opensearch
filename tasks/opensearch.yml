@@ -1,10 +1,18 @@
 ---
-- name: OpenSearch Install | Install via package manager
+- name: OpenSearch Install on Debian
+  ansible.builtin.apt:
+    name: opensearch
+    state: present
+    update_cache: true
+  when: ansible_os_family == 'Debian'
+
+- name: OpenSearch Install on EL
   ansible.builtin.dnf:
     name: opensearch
     state: present
     enablerepo: "{{ opencast_repository_identifiers }}"
     update_cache: true
+  when: ansible_os_family == 'RedHat'
 
 - name: OpenSearch Install | Copy Configuration File
   notify: Restart opensearch

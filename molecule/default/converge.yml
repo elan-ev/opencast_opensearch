@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    opencast_version_major: 15
+    opencast_repository_enabled_release: true
+    opencast_opensearch_heap_size: 100m
+  tasks:
+    - name: Include opensearch role
+      ansible.builtin.include_role:
+        name: "opencast_opensearch"

@@ -9,8 +9,18 @@ galaxy_info:
   min_ansible_version: "2.9"
   galaxy_tags:
     - opencast
+    - opensearch
   platforms:
     - name: EL
       versions:
         - "9"
-dependencies: []
+    - name: Debian
+      versions:
+        - bookworm
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+        - noble
+dependencies:
+  - role: elan.opencast_repository

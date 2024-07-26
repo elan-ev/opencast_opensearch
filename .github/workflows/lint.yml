@@ -1,6 +1,5 @@
 ---
-
-name: Ansible lint
+name: lint
 
 on:  # yamllint disable-line rule:truthy
   push:
@@ -15,10 +14,8 @@ jobs:
 
       - name: install dependencies
         run: >
-          pip3 install
-          ansible-lint
-          yamllint
+          pip install -r .dev_requirements.txt
+
+      - run: yamllint --strict -c .yamllint .
 
       - run: ansible-lint
-
-      - run: yamllint --strict .
