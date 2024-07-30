@@ -24,3 +24,4 @@ galaxy_info:
         - noble
 dependencies:
   - role: elan.opencast_repository
+    version: v0.1.0
