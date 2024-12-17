@@ -1,5 +1,6 @@
 ---
 - name: OpenSearch Install on Debian
+  notify: Restart opensearch
   ansible.builtin.apt:
     name: opensearch
     state: present
@@ -7,6 +8,7 @@
   when: ansible_os_family == 'Debian'
 
 - name: OpenSearch Install on EL
+  notify: Restart opensearch
   ansible.builtin.dnf:
     name: opensearch
     state: present
