@@ -10,6 +10,7 @@ This role supports the following,
 
 - Supports RHEL9, Debian and Ubuntu
 - Install and configure OpenSearch from `elan.opencast_repository`
+- Install analysis-icu OpenSearch plugin (required by Opencast 17+)
 - Disables the OpenSearch security plugin completely. Use a reverse
   proxy to secure OpenSearch with HTTP Basic Auth and TLS.
 
