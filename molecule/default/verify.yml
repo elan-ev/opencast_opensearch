@@ -12,3 +12,9 @@
     - name: Test Opensearch configuration directory exists
       ansible.builtin.assert:
         that: os_conf_dir.stat.exists
+
+    - name: Test Opensearch connection established
+      ansible.builtin.wait_for:
+        port: 9200
+        timeout: 60
+        msg: Opensearch service not reachable
