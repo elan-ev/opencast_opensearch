@@ -1,14 +1,18 @@
 ---
 - name: OpenSearch Install on Debian
   ansible.builtin.apt:
-    name: opensearch
+    name:
+      - opensearch
+      - opensearch-analysis-icu
     state: present
     update_cache: true
   when: ansible_os_family == 'Debian'
 
 - name: OpenSearch Install on EL
   ansible.builtin.dnf:
-    name: opensearch
+    name:
+      - opensearch
+      - opensearch-plugin-analysis-icu
     state: present
     enablerepo: "{{ opencast_repository_identifiers }}"
     update_cache: true
