@@ -4,6 +4,8 @@ Ansible: Opencast OpenSearch Role
 ![lint](https://github.com/elan-ev/opencast_opensearch/actions/workflows/lint.yml/badge.svg)
 ![molecule](https://github.com/elan-ev/opencast_opensearch/actions/workflows/molecule.yml/badge.svg)
 
+> ℹ️ Use version 0.2.0 for Opencast 16 and below.
+
 This Ansible role installs and prepares OpenSearch for Opencast.
 
 This role supports the following,
