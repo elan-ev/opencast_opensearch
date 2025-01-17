@@ -2,4 +2,5 @@
 
 roles:
   - name: elan.opencast_repository
-    version: v0.1.0
+    src: https://github.com/elan-ev/opencast_repository.git
+    version: debian-key-deprecation-fixed
