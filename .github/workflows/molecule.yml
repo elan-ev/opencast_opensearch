@@ -12,13 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: install dependencies
+      - name: Install dependencies
         run: pip install -r .dev_requirements.txt
 
-      - name: install Ansbile dependencies
-        run: ansible-galaxy install -r requirements.yml
-
-      - name: test playbook
+      - name: Test playbook
         run: molecule test
         env:
           PY_COLORS: '1'
