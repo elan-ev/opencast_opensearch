@@ -1,7 +1,7 @@
 cluster.name: "opensearch-cluster"
 node.name: "{{ inventory_hostname }}"
-network.host: "{{ opensearch_api_host }}"
-http.port: "{{ opensearch_api_port }}"
+network.host: "{{ opencast_opensearch_api_host }}"
+http.port: "{{ opencast_opensearch_api_port }}"
 discovery.type: single-node
 bootstrap.memory_lock: true
 plugins.security.disabled: true

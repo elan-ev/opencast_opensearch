@@ -24,9 +24,9 @@ This role supports the following,
 - `opencast_opensearch_heap_size`
   - Memory configuration (default: `1g`)
   - Might make sense to set this to `2g` for larger installations.
-- `opensearch_api_host`
+- `opencast_opensearch_api_host`
   - Defaults to `127.0.0.1`.
-- `opensearch_api_port`
+- `opencast_opensearch_api_port`
   - Defaults to `9200`.
 
 ## Dependencies
