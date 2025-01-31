@@ -28,6 +28,21 @@ This role supports the following,
   - Defaults to `127.0.0.1`.
 - `opensearch_api_port`
   - Defaults to `9200`.
+- `opencast_opensearch_remote_user`
+- `opencast_opensearch_remote_password`
+  - Since Opencast 16 OpenSearch should be reachable by Admin and Presentation Opencast node.
+    To secure the connection from Opencast to OpenSearch an reverse proxy should be used.
+    The Ansible role [elan.opencast_nginx](https://github.com/elan-ev/opencast_nginx) is recommended for this purpose.
+    Defining `opencast_opensearch_remote_user` and `opencast_opensearch_remote_password` will put
+    an Nginx virtual host reverse proxy configuration into `/etc/nginx/sites-enabled/`.
+  - Defaults to `None`
+- `opencast_opensearch_remote_host`
+  - Reverse proxy host name.
+  - Defaults to `inventory_hostname`
+- `opencast_opensearch_remote_port`
+  - Reverse proxy port
+  - Defaults to `9244`
+
 
 ## Dependencies
 
@@ -42,6 +57,37 @@ Example of how to configure and use the role:
   become: true
   roles:
     - role: elan.opencast_opensearch
+```
+
+## SELinux
+
+On systems with SELinux enabled, the reverse proxy configuration may fail du to SELinux restrictions.
+In this case you may want to add this tasks to your playbook:
+
+```yaml
+- name: Install SELinux management libraries
+  ansible.builtin.package:
+    name:
+      - python3-libsemanage
+      - python3-libselinux
+  when: ansible_selinux is defined and ansible_selinux.status == 'enabled'
+
+- name: Allow reverse-proxy listen on port {{ opencast_opensearch_remote_port }}
+  community.general.seport:
+    ports: "{{ opencast_opensearch_remote_port | int }}"
+    proto: tcp
+    setype: http_port_t
+    state: present
+  when: >-
+    ansible_selinux is defined and ansible_selinux.status == 'enabled' and
+    opencast_opensearch_remote_port | int != 443
+
+- name: Allow reverse-proxy connect to other services via http
+  ansible.posix.seboolean:
+    name: httpd_can_network_connect
+    state: true
+    persistent: true
+  when: ansible_selinux is defined and ansible_selinux.status == 'enabled'
 ```
 
 ## License

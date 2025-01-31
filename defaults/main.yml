@@ -7,3 +7,15 @@ opensearch_api_host: 127.0.0.1
 
 # Bind OpenSearch to this specific port.
 opensearch_api_port: 9200
+
+# Reverse proxy basic auth username
+opencast_opensearch_remote_user: None
+
+# Reverse proxy basic auth password
+opencast_opensearch_remote_password: None
+
+# Reverse proxy hostname
+opencast_opensearch_remote_host: "{{ inventory_hostname }}"
+
+# Reverse proxy port
+opencast_opensearch_remote_port: 9243
