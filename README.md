@@ -28,6 +28,9 @@ This role supports the following,
   - Defaults to `127.0.0.1`.
 - `opensearch_api_port`
   - Defaults to `9200`.
+- `opencast_opensearch_started`
+  - By default, the OpenSearch service will (re)start if something has changed that requires the service to be restarted. This is done via the Ansible notification handler. However, if you expect the OpenSearch service to be running when you run this role, you can force the service to start by setting the value to `true`.
+  - Defaults to `false` (make use of Ansible Handler to reach the state)
 
 ## Dependencies
 
