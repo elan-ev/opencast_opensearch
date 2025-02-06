@@ -3,7 +3,7 @@ driver:
   name: containers
 dependency:
   name: galaxy
-  enabled: false
+  enabled: true
 platforms:
   # GH Action for EL8 fails
   # - name: el8

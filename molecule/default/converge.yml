@@ -6,6 +6,6 @@
     opencast_repository_enabled_release: true
     opencast_opensearch_heap_size: 100m
   tasks:
-    - name: Include opensearch role
+    - name: Apply opencast_opensearch role
       ansible.builtin.include_role:
-        name: "opencast_opensearch"
+        name: elan.opencast_opensearch

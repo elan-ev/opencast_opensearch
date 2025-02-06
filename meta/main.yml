@@ -23,5 +23,5 @@ galaxy_info:
         - jammy
         - noble
 dependencies:
-  - role: elan.opencast_repository
+  - name: elan.opencast_repository
     version: v0.1.0
