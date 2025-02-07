@@ -24,9 +24,9 @@ This role supports the following,
 - `opencast_opensearch_heap_size`
   - Memory configuration (default: `1g`)
   - Might make sense to set this to `2g` for larger installations.
-- `opensearch_api_host`
+- `opencast_opensearch_api_host`
   - Defaults to `127.0.0.1`.
-- `opensearch_api_port`
+- `opencast_opensearch_api_port`
   - Defaults to `9200`.
 - `opencast_opensearch_started`
   - By default, the OpenSearch service will (re)start if something has changed that requires the service to be restarted. This is done via the Ansible notification handler. However, if you expect the OpenSearch service to be running when you run this role, you can force the service to start by setting the value to `true`.
