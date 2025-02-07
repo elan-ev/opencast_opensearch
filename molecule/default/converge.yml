@@ -5,6 +5,8 @@
     opencast_version_major: 17
     opencast_repository_enabled_release: true
     opencast_opensearch_heap_size: 100m
+    opencast_opensearch_remote_user: opencast
+    opencast_opensearch_remote_password: opensearchpassword
   tasks:
     - name: Include opensearch role
       ansible.builtin.include_role:
