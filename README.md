@@ -38,7 +38,7 @@ This role supports the following,
     The Ansible role [elan.opencast_nginx](https://github.com/elan-ev/opencast_nginx) is recommended for this purpose.
     Defining `opencast_opensearch_remote_user` and `opencast_opensearch_remote_password` will put
     an Nginx virtual host reverse proxy configuration into `/etc/nginx/sites-enabled/`.
-  - Defaults to `None`
+  - Defaults to `""`
 - `opencast_opensearch_remote_host`
   - Reverse proxy host name.
   - Defaults to `inventory_hostname`

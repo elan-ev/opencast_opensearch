@@ -16,5 +16,5 @@
 - name: Include reverse proxy configuration tasks
   ansible.builtin.include_tasks: nginx_reverse_proxy.yml
   when: >-
-    opencast_opensearch_remote_user != None and
-    opencast_opensearch_remote_password != None
+    opencast_opensearch_remote_user != '' and
+    opencast_opensearch_remote_password != ''

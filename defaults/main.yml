@@ -12,10 +12,10 @@ opencast_opensearch_api_port: 9200
 opencast_opensearch_started: false
 
 # Reverse proxy basic auth username
-opencast_opensearch_remote_user: None
+opencast_opensearch_remote_user: ""
 
 # Reverse proxy basic auth password
-opencast_opensearch_remote_password: None
+opencast_opensearch_remote_password: ""
 
 # Reverse proxy hostname
 opencast_opensearch_remote_host: "{{ inventory_hostname }}"
