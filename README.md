@@ -44,7 +44,7 @@ This role supports the following,
   - Defaults to `inventory_hostname`
 - `opencast_opensearch_remote_port`
   - Reverse proxy port
-  - Defaults to `9244`
+  - Defaults to `9243`
 
 
 ## Dependencies
