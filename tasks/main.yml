@@ -2,8 +2,13 @@
 - name: Include opensearch installation
   ansible.builtin.import_tasks: opensearch.yml
 
-- name: Start and enable OpenSearch service
+- name: Enable OpenSearch service
   ansible.builtin.systemd:
     name: opensearch
     enabled: true
+
+- name: Start OpenSearch service
+  ansible.builtin.systemd:
+    name: opensearch
     state: started
+  when: opencast_opensearch_started | bool
