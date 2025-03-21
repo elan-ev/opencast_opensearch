@@ -3,3 +3,18 @@
   ansible.builtin.systemd:
     name: opensearch
     state: restarted
+
+- name: Gather service facts
+  ansible.builtin.service_facts:
+  listen: Reload nginx
+
+- name: Reload nginx if service exists
+  ansible.builtin.systemd:
+    name: nginx
+    state: reloaded
+  when: >-
+    ansible_facts['services'].values()
+    | selectattr('name', 'equalto', 'nginx.service')
+    | selectattr('state', 'equalto', 'running')
+    | length > 0
+  listen: Reload nginx

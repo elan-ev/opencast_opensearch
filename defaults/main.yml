@@ -10,3 +10,15 @@ opencast_opensearch_api_port: 9200
 
 # Whether to force the start of the OpenSearch service at the end of this role.
 opencast_opensearch_started: false
+
+# Reverse proxy basic auth username
+opencast_opensearch_remote_user: ""
+
+# Reverse proxy basic auth password
+opencast_opensearch_remote_password: ""
+
+# Reverse proxy hostname
+opencast_opensearch_remote_host: "{{ inventory_hostname }}"
+
+# Reverse proxy port
+opencast_opensearch_remote_port: 9243
